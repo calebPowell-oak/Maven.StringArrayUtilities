@@ -79,9 +79,20 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return true if each letter in the alphabet has been used in the array
-     */ // TODO
+     */ //
     public static boolean isPangramic(String[] array) {
-        return false;
+        String search = "";
+        for (String phrase:array) {
+            search += phrase;
+        }
+        String alpha = "qwertyuiopasdfghjklzxcvbnm";
+        char[] alphaArr = alpha.toCharArray();
+        for (char letter :alphaArr) {
+            if (!search.toLowerCase().contains(String.valueOf(letter))){
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
