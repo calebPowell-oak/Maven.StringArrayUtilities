@@ -99,9 +99,15 @@ public class StringArrayUtils {
      * @param array array of String objects
      * @param value value to check array for
      * @return number of occurrences the specified `value` has occurred
-     */ // TODO
+     */ //
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int count = 0;
+        for (String word :array) {
+            if (word.equals(value)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
