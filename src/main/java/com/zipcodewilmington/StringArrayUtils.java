@@ -40,8 +40,14 @@ public class StringArrayUtils {
      * @param array array of String objects
      * @param value value to check array for
      * @return true if the array contains the specified `value`
-     */ // TODO
+     */ //
     public static boolean contains(String[] array, String value) {
+        for (String element:array
+             ) {
+            if(element.equals(value)){
+                return true;
+            }
+        }
         return false;
     }
 

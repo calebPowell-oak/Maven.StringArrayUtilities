@@ -14,5 +14,14 @@ public class ContainsTest {
         }
     }
 
+    @Test
+    public void testContainsFalse() {
+        String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+        String s = "yolo";
+        boolean outcome = StringArrayUtils.contains(array, s);
+        Assert.assertFalse(outcome);
+
+    }
+
 
 }
