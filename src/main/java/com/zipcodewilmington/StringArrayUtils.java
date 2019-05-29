@@ -1,5 +1,8 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -116,28 +119,31 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ //
     public static String[] removeValue(String[] array, String valueToRemove) {
-        int count = 0;
-        for(int i = 0; i < array.length; i++){
-            if(array[i].equals(valueToRemove)){
-                for(int j = i; j < array.length-1;j++){
-                    array[j] = array[j + 1];
-                }
-                count++;
+        ArrayList<String> work = new ArrayList<>(Arrays.asList(array));
+        for(int i = 0; i < work.size();){
+            if(work.get(i).equals(valueToRemove)){
+                work.remove(i);
+            } else {
+                i++;
             }
         }
-        String[] answer = new String[array.length-count];
-        for(int i = 0; i < answer.length; i++){
-            answer[i] = array[i];
-        }
-        return answer;
+        return work.toArray(new String[0]);
     }
 
     /**
      * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
-     */ // TODO
+     */ //
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        String last = array[0];
+        for(int i = 1; i < array.length; i++){
+            if(array[i].equals(last)){
+                array[i] = ".";
+            } else {
+                last = array[i];
+            }
+        }
+        return StringArrayUtils.removeValue(array, ".");
     }
 
     /**
