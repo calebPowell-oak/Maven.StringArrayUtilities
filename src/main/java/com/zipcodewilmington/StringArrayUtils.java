@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -149,9 +151,18 @@ public class StringArrayUtils {
     /**
      * @param array array of chars
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
-     */ // TODO
+     */ //
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        ArrayList<String> ans = new ArrayList<>();
+        ans.add(array[0]);
+        for(int i = 1; i < array.length; i++){
+            if(array[i].equals(array[i-1])){
+                ans.set(ans.size()-1,ans.get(ans.size()-1)+array[i]);
+            } else {
+                ans.add(array[i]);
+            }
+        }
+        return ans.toArray(new String[0]);
     }
 
 
